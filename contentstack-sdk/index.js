@@ -1,8 +1,8 @@
 import * as contentstack from 'contentstack';
-import * as Utils from '@contentstack/utils';
+import getConfig from 'next/config';
 
 import ContentstackLivePreview from '@contentstack/live-preview-utils';
-import getConfig from 'next/config';
+import * as Utils from '@contentstack/utils';
 
 const { publicRuntimeConfig } = getConfig();
 const envConfig = process.env.CONTENTSTACK_API_KEY
@@ -24,7 +24,7 @@ const Stack = contentstack.Stack({
 });
 
 if (envConfig.CONTENTSTACK_API_HOST) {
-  Stack.setHost(envConfig.CONTENTSTACK_API_HOST);
+  Stack.setHost(envConfig.CONTENTSTACK_API_HOST.replace('https://', ''));
 }
 
 ContentstackLivePreview.init({
