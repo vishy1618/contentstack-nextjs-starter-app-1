@@ -1,16 +1,21 @@
-import App from 'next/app';
-import Head from 'next/head';
-import Router from 'next/router';
-import NProgress from 'nprogress';
-import Layout from '../components/layout';
-import { getHeaderRes, getFooterRes, getAllEntries } from '../helper';
 import 'nprogress/nprogress.css';
 import '../styles/third-party.css';
 import '../styles/style.css';
 import 'react-loading-skeleton/dist/skeleton.css';
 import '@contentstack/live-preview-utils/dist/main.css';
-import { Props } from "../typescript/pages";
 
+import App from 'next/app';
+import Head from 'next/head';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+
+import Layout from '../components/layout';
+import {
+  getAllEntries,
+  getFooterRes,
+  getHeaderRes,
+} from '../helper';
+import { Props } from '../typescript/pages';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -40,6 +45,7 @@ function MyApp(props: Props) {
     return metaArr;
   };
   const blogList: any = posts?.concat(archivePost);
+  // test commit
   return (
     <>
       <Head>
